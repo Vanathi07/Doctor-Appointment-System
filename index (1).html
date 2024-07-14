@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Appointment form</title>
+  <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="background">
+        <div class="booking-form">
+            <h2>Appointment Booking Form</h2>
+            <form action="register.php" method="post">
+                <label for="name1">Name:</label>
+                <input type="text" name="name1" id="name1" required>
+ 
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+
+                <label for="gender">Select a gender:</label>
+                <select name="gender" id="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="nil">Prefer not to say</option>
+                </select>
+
+                <label for="age">Age:</label>
+                <input type="text" name="age" id="age" required>
+
+                <label for="loc">Location:</label>
+                <input type="text" name="loc" id="loc" required>
+
+                <label for="contact">Contact:</label>
+                <input type="number" maxlength="10" title="Please enter exactly 10 digits" name="contact" id="contact" required/>
+
+                <label for="appoint_date">Choose Appointment date:</label>
+                <input type="date" name="appoint_date" id="appoint_date" required>
+               
+                <label for="descr">Describe your issue:</label>
+                <input type="text" name="descr" id="descr" required>
+
+                <button type="submit1" name="submit1">Book Appointment</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

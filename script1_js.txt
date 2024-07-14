@@ -1,0 +1,55 @@
+const navbarMenu = document.querySelector(".navbar .links");
+const hamburgerBtn = document.querySelector(".hamburger-btn");
+const hideMenuBtn = navbarMenu.querySelector(".close-btn");
+const showPopupBtn = document.querySelector(".login-btn");
+const formPopup = document.querySelector(".form-popup");
+const hidePopupBtn = formPopup.querySelector(".close-btn");
+const signupLoginLink = formPopup.querySelectorAll(".bottom-link a");
+
+hamburgerBtn.addEventListener("click", () => 
+{
+    navbarMenu.classList.toggle("show-menu");
+});
+
+
+hideMenuBtn.addEventListener("click", () => hamburgerBtn.click());
+
+showPopupBtn.addEventListener("click", () => 
+{
+    document.body.classList.toggle("show-popup");
+});
+
+
+hidePopupBtn.addEventListener("click", () => showPopupBtn.click());
+
+signupLoginLink.forEach(link => {
+    link.addEventListener("click", (e) => {
+        e.preventDefault();
+        formPopup.classList[link.id === 'signup-link' ? 'add' : 'remove']("show-signup");
+    });
+});
+
+
+document.querySelector("form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const email = document.querySelector("input[name='email']").value;
+    const pass = document.querySelector("input[name='pass']").value;
+
+    if (email && pass) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "register.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                const response = xhr.responseText;
+                console.log(response);
+            }
+        };
+
+        const data = `email=${encodeURIComponent(email)}&pass=${encodeURIComponent(pass)}`;
+        xhr.send(data);
+    } else {
+        alert("Please provide all details");
+    }
+});
